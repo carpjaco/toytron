@@ -1,0 +1,10 @@
+<select class="code-list" size="20" #selected>
+  <option *ngFor="let instr of list; let ndx = index" [value]="ndx">{{ instr | operation }}</option>
+</select>
+
+<button type="button" class="btn btn-code-list" (click)="moveUp(selected.value)">Up</button>
+<button type="button" class="btn btn-code-list" (click)="moveDown(selected.value)">Down</button>
+<button type="button" class="btn btn-code-list" (click)="remove(selected.value)">Remove</button>
+
+<button type="button" class="btn btn-code" (click)="install()">Install</button>
+<button type="button" class="btn btn-code" (click)="clear()">Clear</button>
