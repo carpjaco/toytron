@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 import { System } from '../core/system.model';
 import { CodeComponent } from '../code/code.component';
+import { InstructionFactory } from '../core/instruction.factory';
 
 @Component({
   selector: 'app-program',
@@ -12,139 +13,78 @@ export class ProgramComponent implements OnInit {
   @ViewChild(CodeComponent) codeComponent: CodeComponent;
   @Input() private system: System;
 
-  constructor() { }
+  constructor(private instructionFactory: InstructionFactory) { }
 
   read(address: number): void {
-    this.codeComponent.append({
-      operator: 20,
-      operand: address,
-      execute: function (system: System): void {
-        system.requestInput(address);
-      }
-    });
+    this.codeComponent.append(
+      this.instructionFactory.getInstruction(20, address, true)
+    );
   }
 
   write(address: number): void {
-    this.codeComponent.append({
-      operator: 21,
-      operand: address,
-      execute: function (system: System): void {
-        system.screen = system.memory.get(address).operand;
-        system.incCounter();
-      }
-    });
+    this.codeComponent.append(
+      this.instructionFactory.getInstruction(21, address, true)
+    );
   }
 
   load(address: number): void {
-    this.codeComponent.append({
-      operator: 30,
-      operand: address,
-      execute: function (system: System): void {
-        system.accumulator = system.memory.get(address).operand;
-        system.incCounter();
-      }
-    });
+    this.codeComponent.append(
+      this.instructionFactory.getInstruction(30, address, true)
+    );
   }
 
   store(address: number): void {
-    this.codeComponent.append({
-      operator: 31,
-      operand: address,
-      execute: function (system: System): void {
-        system.memory.set(address, system.accumulator);
-      }
-    });
+    this.codeComponent.append(
+      this.instructionFactory.getInstruction(31, address, true)
+    );
   }
 
   add(address: number): void {
-    this.codeComponent.append({
-      operator: 40,
-      operand: address,
-      execute: function (system: System): void {
-        system.accumulator += system.memory.get(address).operand;
-        system.incCounter();
-      }
-    });
+    this.codeComponent.append(
+      this.instructionFactory.getInstruction(40, address, true)
+    );
   }
 
   subtr(address: number): void {
-    this.codeComponent.append({
-      operator: 41,
-      operand: address,
-      execute: function (system: System): void {
-        system.accumulator -= system.memory.get(address).operand;
-        system.incCounter();
-      }
-    });
+    this.codeComponent.append(
+      this.instructionFactory.getInstruction(41, address, true)
+    );
   }
 
   div(address: number): void {
-    this.codeComponent.append({
-      operator: 42,
-      operand: address,
-      execute: function (system: System): void {
-        system.accumulator /= system.memory.get(address).operand;
-        system.incCounter();
-      }
-    });
+    this.codeComponent.append(
+      this.instructionFactory.getInstruction(42, address, true)
+    );
   }
 
   mult(address: number): void {
-    this.codeComponent.append({
-      operator: 43,
-      operand: address,
-      execute: function (system: System): void {
-        system.accumulator *= system.memory.get(address).operand;
-        system.incCounter();
-      }
-    });
+    this.codeComponent.append(
+      this.instructionFactory.getInstruction(43, address, true)
+    );
   }
 
   branch(address: number): void {
-    this.codeComponent.append({
-      operator: 50,
-      operand: address,
-      execute: function (system: System): void {
-        system.branchCounter(address);
-      }
-    });
+    this.codeComponent.append(
+      this.instructionFactory.getInstruction(50, address, true)
+    );
   }
 
   brneg(address: number): void {
-    this.codeComponent.append({
-      operator: 51,
-      operand: address,
-      execute: function (system: System): void {
-        if (system.accumulator < 0) {
-          system.branchCounter(address);
-        } else {
-          system.incCounter();
-        }
-      }
-    });
+    this.codeComponent.append(
+      this.instructionFactory.getInstruction(51, address, true)
+    );
   }
 
   brzero(address: number): void {
-    this.codeComponent.append({
-      operator: 52,
-      operand: address,
-      execute: function (system: System): void {
-        if (system.accumulator === 0) {
-          system.branchCounter(address);
-        } else {
-          system.incCounter();
-        }
-      }
-    });
+    this.codeComponent.append(
+      this.instructionFactory.getInstruction(5220, address, true)
+    );
   }
 
   halt(): void {
-    this.codeComponent.append({
-      operator: 53,
-      execute: function(system: System): void {
-        system.pause();
-      }
-    });
+    this.codeComponent.append(
+      this.instructionFactory.getInstruction(53, undefined, true)
+    );
   }
 
   ngOnInit() {

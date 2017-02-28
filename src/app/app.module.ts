@@ -10,6 +10,7 @@ import { MemoryComponent } from './memory/memory.component';
 import { Memory } from './core/memory.model';
 import { ProgramComponent } from './program/program.component';
 import { System } from './core/system.model';
+import { InstructionFactory } from './core/instruction.factory';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { System } from './core/system.model';
     FormsModule,
     HttpModule
   ],
-  providers: [System],
+  providers: [System, InstructionFactory],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
