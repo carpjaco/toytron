@@ -1,0 +1,14 @@
+<table class="tbl-memory">
+  <thead>
+  <tr>
+    <th></th>
+    <th *ngFor="let head of dimension">{{ head }}</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let head of dimension; let row = index">
+      <td>{{ head }}</td>
+      <td *ngFor="let bank of data; let col = index">{{ data[row][col] }}</td>
+    </tr>
+  </tbody>
+</table>

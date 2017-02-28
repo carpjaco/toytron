@@ -1,0 +1,22 @@
+.tbl-memory {
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.tbl-memory td:nth-of-type(1) {
+  font-weight: bold;
+}
+
+.tbl-memory th,
+.tbl-memory td {
+  border: 1px solid #CCC;
+  width: 5rem;
+  padding: 1rem;
+}
+
+.tbl-memory,
+.tbl-memory tr,
+.tbl-memory th,
+.tbl-memory td {
+  border: 1px solid #CCC;
+}

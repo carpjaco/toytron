@@ -6,19 +6,22 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { CodeComponent } from './code/code.component';
 import { OperationPipe } from './core/operation.pipe';
+import { MemoryComponent } from './memory/memory.component';
+import { Memory } from './core/memory.model';
 
 @NgModule({
   declarations: [
     AppComponent,
     CodeComponent,
-    OperationPipe
+    OperationPipe,
+    MemoryComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [Memory],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
