@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { System } from './core/system.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  constructor(private system: System) { }
 }

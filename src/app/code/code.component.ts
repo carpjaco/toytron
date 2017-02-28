@@ -14,6 +14,10 @@ export class CodeComponent implements OnInit {
     this.clear();
   }
 
+  append(instruction: Instruction) {
+    this.list.push(instruction);
+  }
+
   moveUp(index: number): void {
     this.list = this.swap(this.list, index, index - 1);
   }
@@ -30,8 +34,9 @@ export class CodeComponent implements OnInit {
     this.list = new Array<Instruction>();
   }
 
-  // TODO: build emitter to pass list to memory
-
+  install(): void {
+    // TODO: build emitter to pass list to memory
+  }
   private swap(array: any[], a: number, b: number): any[] {
     try {
       if (a >= 0 && b >= 0 && a < array.length && b < array.length) {

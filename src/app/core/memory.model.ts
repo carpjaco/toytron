@@ -1,20 +1,37 @@
+import { Instruction } from './instruction.model';
+
 export class Memory {
-  private banks: number[][];
+  private banks: Instruction[][];
   private bankDimension = 10;
 
   constructor() {
     this.banks = this.emptyMemory();
   }
 
-  get(row: number, column: number): number {
-    return this.banks[row][column];
+  private getAddress(row: number, column: number): number {
+    return row * this.bankDimension + column;
   }
 
-  set(row: number, column: number, value: number): void {
-    this.banks[row][column] = value;
+  get(address: number): Instruction {
+    return this.banks[this.addressToRow(address)][this.addresstoCol(address)];
   }
 
-  getAll(): number[][] {
+  set(address: number, value: number): void {
+    this.banks[this.addressToRow(address)][this.addresstoCol(address)] = {
+      operator: 0,
+      operand: value
+    };
+  }
+
+  private addressToRow(address: number): number {
+    return +address / this.bankDimension;
+  }
+
+  private addresstoCol(address: number): number {
+    return +address % this.bankDimension;
+  }
+
+  getAll(): Instruction[][] {
     return this.banks;
   }
 
@@ -22,11 +39,14 @@ export class Memory {
     return Array.from(Array(this.bankDimension).keys()).map((x, i) => '0' + i);
   }
 
-  private emptyMemory(): number[][] {
-    const arr = new Array<Array<number>>(this.bankDimension);
+  private emptyMemory(): Instruction[][] {
+    const arr = new Array<Array<Instruction>>(this.bankDimension);
 
     for (let i = 0; i < this.bankDimension; ++i) {
-      arr[i] = new Array<number>(this.bankDimension).fill(0);
+      arr[i] = new Array<Instruction>(this.bankDimension).fill({
+        operator: 0,
+        operand: 0
+      });
     }
 
     return arr;

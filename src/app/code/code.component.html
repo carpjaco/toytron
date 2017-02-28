@@ -1,5 +1,8 @@
 <select class="code-list" size="20" #selected>
-  <option *ngFor="let instr of list; let ndx = index" [value]="ndx">{{ instr | operation }}</option>
+  <option *ngFor="let instr of list; let ndx = index"
+          [value]="ndx">
+    {{ ndx }}: {{ instr | operation }}
+  </option>
 </select>
 
 <button type="button" class="btn btn-code-list" (click)="moveUp(selected.value)">Up</button>
