@@ -1,88 +1,170 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Instruction } from './instruction.model';
 import { System } from './system.model';
-;
-@Injectable()
-export class InstructionFactory implements OnInit {
-  getInstruction(
-    operator: number,
-    address: number,
-    withExecute?: boolean
-  ): Instruction {
-    const instr = { operator: operator, operand: address, execute: undefined };
+import { Operation } from './operation.enum';
 
-    if (withExecute) {
-      instr.execute = this.getExecute(instr.operator, instr.operand);
+@Injectable()
+export class InstructionFactory {
+  create(operator: Operation, address: number): Instruction {
+    const instr = {
+      operator: operator,
+      operand: address,
+      execute: undefined
+    };
+
+    return this.completeInstruction(instr);
+  }
+
+  private completeInstruction(instr: Instruction): Instruction {
+    switch (instr.operator) {
+      case Operation.Read:
+        instr = this.getRead(instr);
+        break;
+      case Operation.Write:
+        instr = this.getWrite(instr);
+        break;
+      case Operation.Load:
+        instr = this.getLoad(instr);
+        break;
+      case Operation.Store:
+        instr = this.getStore(instr);
+        break;
+      case Operation.Add:
+        instr = this.getAdd(instr);
+        break;
+      case Operation.Subtract:
+        instr = this.getSubtract(instr);
+        break;
+      case Operation.Divide:
+        instr = this.getDivide(instr);
+        break;
+      case Operation.Multiply:
+        instr = this.getMultiply(instr);
+        break;
+      case Operation.Branch:
+        instr = this.getBranch(instr);
+        break;
+      case Operation.BranchNeg:
+        instr = this.getBranchNeg(instr);
+        break;
+      case Operation.BranchZero:
+        instr = this.getBranchZero(instr);
+        break;
+      case Operation.Halt:
+        instr = this.getHalt(instr);
+        break;
     }
 
     return instr;
   }
 
-  private getExecute(operator: number, address: number): Function {
-    switch (operator) {
-      case 20:
-        return function (system: System) {
-          system.requestInput(address);
-        };
-      case 21:
-        return function (system: System): void {
-          system.screen = system.memory.get(address).operand;
-          system.incCounter();
-        };
-      case 30:
-        return function (system: System): void {
-          system.accumulator = system.memory.get(address).operand;
-          system.incCounter();
-        };
-      case 31:
-        return function (system: System): void {
-          system.memory.set(address, system.accumulator);
-        };
-      case 40:
-        return function (system: System): void {
-          system.accumulator += system.memory.get(address).operand;
-          system.incCounter();
-        };
-      case 41:
-        return function (system: System): void {
-          system.accumulator -= system.memory.get(address).operand;
-          system.incCounter();
-        };
-      case 42:
-        return function (system: System): void {
-          system.accumulator /= system.memory.get(address).operand;
-          system.incCounter();
-        };
-      case 43:
-        return function (system: System): void {
-          system.accumulator *= system.memory.get(address).operand;
-          system.incCounter();
-        };
-      case 50:
-        return function (system: System): void {
-          system.branchCounter(address);
-        };
-      case 51:
-        return function (system: System): void {
-          if (system.accumulator < 0) {
-            system.branchCounter(address);
-          } else {
-            system.incCounter();
-          }
-        };
-      case 52:
-        return function (system: System): void {
-          if (system.accumulator === 0) {
-            system.branchCounter(address);
-          } else {
-            system.incCounter();
-          }
-        };
-      case 53:
-        return function (system: System): void {
-          system.pause();
-        };
-    }
+  private getRead(instr: Instruction): Instruction {
+    instr.execute = (system: System) => {
+      system.requestInput(instr.operand);
+    };
+
+    return instr;
   }
-  ngOnInit() { }
+
+  private getWrite(instr: Instruction): Instruction {
+    instr.execute = (system: System) => {
+      system.screen = system.memory.get(instr.operand).operand;
+      system.incCounter();
+    };
+
+    return instr;
+  }
+
+  private getLoad(instr: Instruction): Instruction {
+    instr.execute = (system: System) => {
+      system.accumulator = system.memory.get(instr.operand).operand;
+      system.incCounter();
+    };
+
+    return instr;
+  }
+
+  private getStore(instr: Instruction): Instruction {
+    instr.execute = (system: System) => {
+      system.memory.set(instr.operand, system.accumulator);
+    };
+
+    return instr;
+  }
+
+  private getAdd(instr: Instruction): Instruction {
+    instr.execute = (system: System) => {
+      system.accumulator += system.memory.get(instr.operand).operand;
+      system.incCounter();
+    };
+
+    return instr;
+  }
+
+  private getSubtract(instr: Instruction): Instruction {
+    instr.execute = (system: System) => {
+      system.accumulator -= system.memory.get(instr.operand).operand;
+      system.incCounter();
+    };
+
+    return instr;
+  }
+
+  private getMultiply(instr: Instruction): Instruction {
+    instr.execute = (system: System) => {
+      system.accumulator *= system.memory.get(instr.operand).operand;
+      system.incCounter();
+    };
+
+    return instr;
+  }
+
+  private getDivide(instr: Instruction): Instruction {
+    instr.execute = (system: System) => {
+      system.accumulator /= system.memory.get(instr.operand).operand;
+      system.incCounter();
+    };
+
+    return instr;
+  }
+
+  private getBranch(instr: Instruction): Instruction {
+    instr.execute = (system: System) => {
+      system.branchCounter(instr.operand);
+    };
+
+    return instr;
+  }
+
+  private getBranchNeg(instr: Instruction): Instruction {
+    instr.execute = (system: System) => {
+      if (system.accumulator < 0) {
+        system.branchCounter(instr.operand);
+      } else {
+        system.incCounter();
+      }
+    };
+
+    return instr;
+  }
+
+  private getBranchZero(instr: Instruction): Instruction {
+    instr.execute = (system: System) => {
+      if (system.accumulator === 0) {
+        system.branchCounter(instr.operand);
+      } else {
+        system.incCounter();
+      }
+    };
+
+    return instr;
+  }
+
+  private getHalt(instr: Instruction): Instruction {
+    instr.execute = (system: System) => {
+      system.pause();
+    };
+
+    return instr;
+  }
 }
