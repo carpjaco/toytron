@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Instruction } from '../core/instruction.model';
-import { OperationPipe } from '../core/operation.pipe';
+import { InstructionPipe } from '../core/instruction.pipe';
+import { LeftPadPipe } from '../core/left-pad.pipe';
 
 @Component({
   selector: 'app-code',

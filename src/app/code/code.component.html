@@ -1,7 +1,7 @@
 <select class="code-list" size="20" #selected>
   <option *ngFor="let instr of list; let ndx = index"
           [value]="ndx">
-    {{ ndx }}: {{ instr | operation }}
+    {{ ndx | leftpad: 2 : '0' }}: {{ instr | instruction }}
   </option>
 </select>
 
