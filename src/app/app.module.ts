@@ -5,18 +5,23 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { CodeComponent } from './code/code.component';
-import { OperationPipe } from './core/operation.pipe';
+import { InstructionPipe } from './core/instruction.pipe';
 import { MemoryComponent } from './memory/memory.component';
 import { Memory } from './core/memory.model';
 import { ProgramComponent } from './program/program.component';
 import { System } from './core/system.model';
 import { InstructionFactory } from './core/instruction.factory';
+import { AddressPipe } from './core/address.pipe';
+import { AddressFactory } from './core/address.factory';
+import { LeftPadPipe } from './core/left-pad.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CodeComponent,
-    OperationPipe,
+    InstructionPipe,
+    AddressPipe,
+    LeftPadPipe,
     MemoryComponent,
     ProgramComponent,
   ],
@@ -25,7 +30,12 @@ import { InstructionFactory } from './core/instruction.factory';
     FormsModule,
     HttpModule
   ],
-  providers: [System, InstructionFactory],
+  providers: [
+    System,
+    InstructionFactory,
+    AddressFactory,
+    LeftPadPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

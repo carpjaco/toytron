@@ -1,5 +1,6 @@
 import { Memory } from './memory.model';
 import { EventEmitter } from '@angular/core';
+import { Instruction } from './instruction.model';
 
 export class System {
   screen: number;
@@ -44,6 +45,6 @@ export class System {
   }
 
   step(): void {
-    this.memory.get(this.prgCounter).execute(this);
+    (<Instruction>this.memory.get(this.prgCounter)).execute(this);
   }
 }

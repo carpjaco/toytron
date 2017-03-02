@@ -1,7 +1,7 @@
-import { Instruction } from './instruction.model';
+import { Address } from './address.model';
 
 export class Memory {
-  private banks: Instruction[][];
+  private banks: Address[][];
   private bankDimension = 10;
 
   constructor() {
@@ -12,7 +12,7 @@ export class Memory {
     return row * this.bankDimension + column;
   }
 
-  get(address: number): Instruction {
+  get(address: number): Address {
     return this.banks[this.addressToRow(address)][this.addresstoCol(address)];
   }
 
@@ -31,7 +31,7 @@ export class Memory {
     return +address % this.bankDimension;
   }
 
-  getAll(): Instruction[][] {
+  getAll(): Address[][] {
     return this.banks;
   }
 
@@ -39,11 +39,11 @@ export class Memory {
     return Array.from(Array(this.bankDimension).keys()).map((x, i) => '0' + i);
   }
 
-  private emptyMemory(): Instruction[][] {
-    const arr = new Array<Array<Instruction>>(this.bankDimension);
+  private emptyMemory(): Address[][] {
+    const arr = new Array<Array<Address>>(this.bankDimension);
 
     for (let i = 0; i < this.bankDimension; ++i) {
-      arr[i] = new Array<Instruction>(this.bankDimension).fill({
+      arr[i] = new Array<Address>(this.bankDimension).fill({
         operator: 0,
         operand: 0
       });

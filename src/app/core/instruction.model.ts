@@ -1,8 +1,6 @@
 import { System } from './system.model';
-import { Operation } from './operation.enum';
+import { Address } from './address.model';
 
-export interface Instruction {
-  operator: Operation;
-  operand?: number;
+export interface Instruction extends Address {
   execute?: (system: System) => void;
 }

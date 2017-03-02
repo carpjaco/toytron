@@ -2,20 +2,19 @@ import { Injectable, OnInit } from '@angular/core';
 import { Instruction } from './instruction.model';
 import { System } from './system.model';
 import { Operation } from './operation.enum';
+import { AddressFactory } from './address.factory';
 
 @Injectable()
 export class InstructionFactory {
-  create(operator: Operation, address: number): Instruction {
-    const instr = {
-      operator: operator,
-      operand: address,
-      execute: undefined
-    };
+  constructor(private addressFactory: AddressFactory) { }
 
-    return this.completeInstruction(instr);
+  create(operator: Operation, address: number): Instruction {
+    const instr = <Instruction>this.addressFactory.create(operator, address);
+
+    return this.includeOperation(instr);
   }
 
-  private completeInstruction(instr: Instruction): Instruction {
+  private includeOperation(instr: Instruction): Instruction {
     switch (instr.operator) {
       case Operation.Read:
         instr = this.getRead(instr);
