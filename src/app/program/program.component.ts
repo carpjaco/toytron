@@ -12,7 +12,6 @@ import { Operation } from '../core/operation.enum';
 })
 export class ProgramComponent implements OnInit {
   @ViewChild(CodeComponent) codeComp: CodeComponent;
-  @Input() private system: System;
 
   constructor(private instrFactory: InstructionFactory) { }
 
