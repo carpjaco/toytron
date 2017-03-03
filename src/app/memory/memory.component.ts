@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Instruction } from '../core/instruction.model';
 
 @Component({
   selector: 'app-memory',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./memory.component.css']
 })
 export class MemoryComponent implements OnInit {
-  @Input() private data: number[][];
+  @Input() private data: Instruction[][];
   @Input() private dimension: any[];
 
   constructor() { }
