@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+.container {
+  width: 90%;
+  max-width: 960;
+  margin: auto;
+}
+
+.tt-section {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: .512rem;
+  min-height: 235px;
+  margin: .512rem;
+}
+
+.btn {
+  background-color: #DDD;
+  border: 1px solid #888;
+}

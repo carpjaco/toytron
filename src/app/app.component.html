@@ -1,1 +1,27 @@
-<app-program></app-program>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="tt-component">
+        <app-code></app-code>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="tt-component">
+        <app-program (codeCreated)="onCodeCreated($event)"></app-program>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="tt-component">
+        <app-system [system]="system"></app-system>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tt-component">
+        <app-memory [data]="system.memory.getAll()" [dimension]="system.memory.getDimension()">
+        </app-memory>
+      </div>
+    </div>
+  </div>
+</div>

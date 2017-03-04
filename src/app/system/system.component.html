@@ -1,0 +1,48 @@
+<section class="tt-section">
+  <article class="sys-section">
+    <div class="container">
+      <div class="sys-section-header">
+        <h3>Accumulator</h3>
+      </div>
+      <div class="sys-section-content">
+        {{ system.accumulator }}
+      </div>
+    </div>
+  </article>
+
+  <article class="sys-section">
+    <div class="container">
+      <div class="sys-section-header">
+        <h3>Program Counter</h3>
+      </div>
+      <div class="sys-section-content">
+        {{ system.getCounter() }}
+      </div>
+    </div>
+  </article>
+
+  <article class="sys-section">
+    <div class="container">
+      <div class="sys-section-header">
+        <h3>Input</h3>
+      </div>
+      <div class="sys-section-content">
+        <input type="text" #input />
+        <button type="button"  class="btn btn-input" (click)="provideInput(input.value)">
+          Go
+        </button> 
+      </div>
+    </div>
+  </article>
+
+  <article class="sys-section">
+    <div class="container">
+      <div class="sys-section-header">
+        <h3>Output</h3>
+      </div>
+      <div class="sys-section-content">
+
+      </div>
+    </div>
+  </article>
+</section>

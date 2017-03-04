@@ -1,0 +1,53 @@
+h3 {
+  margin-top: 0;
+  margin-bottom: .41rem;
+}
+
+.tt-section {
+  border: 1px solid #CCC;
+  border-radius: .41rem;  
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: .512rem;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #CCC;
+  border-radius: .41rem;  
+  box-shadow: 2px 2px 10px #888;
+  overflow: hidden;
+}
+
+.sys-section {
+  width: 50%;
+  padding: .41rem;
+  text-align: center;
+}
+
+
+.sys-section {
+  width: 45%;
+}
+
+.sys-section-header {
+  background-color: transparent;
+}
+
+.sys-section-content {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 1rem;
+  font-size: 1.25rem;
+  font-family: "Lucida Console", Monaco, monospace
+}
+
+input {
+  font-family: "Lucida Console", Monaco, monospace;
+  text-align: center;
+  padding: .41rem;
+  border: 1px solid #CCC;
+  border-radius: .21rem;
+}
