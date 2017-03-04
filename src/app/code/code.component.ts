@@ -10,6 +10,7 @@ import { LeftPadPipe } from '../core/left-pad.pipe';
 })
 export class CodeComponent implements OnInit {
   private list: Instruction[];
+  storage: any;
 
   constructor() {
     this.clear();
@@ -38,6 +39,11 @@ export class CodeComponent implements OnInit {
   install(): void {
     // TODO: build emitter to pass list to memory
   }
+
+  addLine(instruction: Instruction) {
+    this.list.push(instruction);
+  }
+
   private swap(array: any[], a: number, b: number): any[] {
     try {
       if (a >= 0 && b >= 0 && a < array.length && b < array.length) {
@@ -50,5 +56,7 @@ export class CodeComponent implements OnInit {
     return array;
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.storage);
+   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Address } from '../core/address.model';
 import { Instruction } from '../core/instruction.model';
 
 @Component({
@@ -7,10 +8,14 @@ import { Instruction } from '../core/instruction.model';
   styleUrls: ['./memory.component.css']
 })
 export class MemoryComponent implements OnInit {
-  @Input() private data: Instruction[][];
+  @Input() private data: Instruction[];
   @Input() private dimension: any[];
 
   constructor() { }
+
+  append(instruction: Instruction): void {
+    this.data.push(instruction);
+  }
 
   ngOnInit() { }
 }

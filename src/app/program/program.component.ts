@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 import { System } from '../core/system.model';
-import { CodeComponent } from '../code/code.component';
 import { InstructionFactory } from '../core/instruction.factory';
 import { Operation } from '../core/operation.enum';
+import { Instruction } from '../core/instruction.model';
 
 @Component({
   selector: 'app-program',
@@ -11,7 +11,7 @@ import { Operation } from '../core/operation.enum';
   styleUrls: ['./program.component.css']
 })
 export class ProgramComponent implements OnInit {
-  @ViewChild(CodeComponent) codeComp: CodeComponent;
+  @Output() codeCreated: EventEmitter<Instruction> = new EventEmitter();
 
   constructor(private instrFactory: InstructionFactory) { }
 
@@ -21,7 +21,7 @@ export class ProgramComponent implements OnInit {
     const operation = +Operation[event.target.innerText];
     const operand = +operandField.value;
 
-    this.codeComp.append(this.instrFactory.create(operation, operand));
+    this.codeCreated.emit(this.instrFactory.create(operation, operand));
   }
 
   ngOnInit() { }
