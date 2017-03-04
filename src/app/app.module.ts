@@ -14,6 +14,7 @@ import { InstructionFactory } from './core/instruction.factory';
 import { AddressPipe } from './core/address.pipe';
 import { AddressFactory } from './core/address.factory';
 import { LeftPadPipe } from './core/left-pad.pipe';
+import { SystemComponent } from './system/system.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { LeftPadPipe } from './core/left-pad.pipe';
     LeftPadPipe,
     MemoryComponent,
     ProgramComponent,
+    SystemComponent,
   ],
   imports: [
     BrowserModule,
