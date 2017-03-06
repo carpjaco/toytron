@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Instruction } from '../core/instruction.model';
 import { InstructionPipe } from '../core/instruction.pipe';
 import { LeftPadPipe } from '../core/left-pad.pipe';
@@ -10,7 +10,7 @@ import { LeftPadPipe } from '../core/left-pad.pipe';
 })
 export class CodeComponent implements OnInit {
   private list: Instruction[];
-  storage: any;
+  @Output() private installCode: EventEmitter<Instruction[]> = new EventEmitter();
 
   constructor() {
     this.clear();
@@ -37,11 +37,7 @@ export class CodeComponent implements OnInit {
   }
 
   install(): void {
-    // TODO: build emitter to pass list to memory
-  }
-
-  addLine(instruction: Instruction) {
-    this.list.push(instruction);
+    this.installCode.emit(this.list);
   }
 
   private swap(array: any[], a: number, b: number): any[] {
@@ -56,7 +52,5 @@ export class CodeComponent implements OnInit {
     return array;
   }
 
-  ngOnInit() {
-    console.log(this.storage);
-   }
+  ngOnInit() { }
 }

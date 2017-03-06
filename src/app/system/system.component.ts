@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { System } from '../core/system.model';
 
 @Component({
@@ -8,8 +8,22 @@ import { System } from '../core/system.model';
 })
 export class SystemComponent implements OnInit {
   @Input() private system: System;
+  private inputAlert: boolean;
 
   constructor() { }
+
+  run(): void {
+    this.system.run();
+  }
+
+  step(): void {
+    this.system.step();
+  }
+
+  setInput(field: HTMLInputElement): void {
+    this.system.provideInput(+field.value);
+    field.value = null;
+  }
 
   ngOnInit() { }
 }

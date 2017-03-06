@@ -21,14 +21,14 @@
     </div>
   </article>
 
-  <article class="sys-section">
+  <article class="sys-section" [ngClass]="{'alert': system.isInputRequested()}">
     <div class="container">
       <div class="sys-section-header">
         <h3>Input</h3>
       </div>
       <div class="sys-section-content">
-        <input type="text" #input />
-        <button type="button"  class="btn btn-input" (click)="provideInput(input.value)">
+        <input type="text" [ngModel]="inputValue" (ngModelChange)="inputValue ? $event : null" #operand>
+        <button type="button" class="btn btn-input" (click)="setInput(operand)">
           Go
         </button> 
       </div>
@@ -41,8 +41,10 @@
         <h3>Output</h3>
       </div>
       <div class="sys-section-content">
-
+        {{ system.screen }}
       </div>
     </div>
   </article>
+
+  <button (click)="step()">Step</button>
 </section>

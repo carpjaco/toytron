@@ -16,10 +16,15 @@ export class ProgramComponent implements OnInit {
   constructor(private instrFactory: InstructionFactory) { }
 
   create(event: any, operandField: HTMLInputElement): void {
-    if (event.type !== 'click' || operandField.value === undefined) { return; }
+    if (event.type !== 'click') { return; }
 
     const operation = +Operation[event.target.innerText];
     const operand = +operandField.value;
+
+    if (operation !== Operation.Halt && operandField.value === '') { return; }
+
+    operandField.value = null;
+    operandField.focus();
 
     this.codeCreated.emit(this.instrFactory.create(operation, operand));
   }

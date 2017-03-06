@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-3">
       <div class="tt-component">
-        <app-code></app-code>
+        <app-code (installCode)="onInstallCode($event)"></app-code>
       </div>
     </div>
     <div class="col-md-3">
@@ -12,7 +12,7 @@
     </div>
     <div class="col-md-6">
       <div class="tt-component">
-        <app-system [system]="system"></app-system>
+        <app-system [system]="system" (inputRequest)="onInputRequest($event)"></app-system>
       </div>
     </div>
   </div>
