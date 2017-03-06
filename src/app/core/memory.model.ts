@@ -13,21 +13,24 @@ export class Memory {
   }
 
   get(address: number): Address {
-    return this.banks[this.addressToRow(address)][this.addresstoCol(address)];
+    return this.banks[this.addressToRow(address)][this.addressToCol(address)];
   }
 
-  set(address: number, value: number): void {
-    this.banks[this.addressToRow(address)][this.addresstoCol(address)] = {
-      operator: 0,
-      operand: value
-    };
+  set(address: number, value: any): void {
+    if (!(value instanceof Address)) {
+      const addr = new Address();
+      addr.operand = value;
+      value = addr;
+    }
+
+    this.banks[this.addressToRow(address)][this.addressToCol(address)] = value;
   }
 
   private addressToRow(address: number): number {
-    return +address / this.bankDimension;
+    return Math.floor(+address / this.bankDimension);
   }
 
-  private addresstoCol(address: number): number {
+  private addressToCol(address: number): number {
     return +address % this.bankDimension;
   }
 
@@ -43,10 +46,9 @@ export class Memory {
     const arr = new Array<Array<Address>>(this.bankDimension);
 
     for (let i = 0; i < this.bankDimension; ++i) {
-      arr[i] = new Array<Address>(this.bankDimension).fill({
-        operator: 0,
-        operand: 0
-      });
+      const addr = new Address();
+      addr.operand = 0;
+      arr[i] = new Array<Address>(this.bankDimension).fill(addr);
     }
 
     return arr;

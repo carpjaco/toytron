@@ -67,7 +67,7 @@ export class InstructionFactory {
 
   private getWrite(instr: Instruction): Instruction {
     instr.execute = (system: System) => {
-      system.screen = system.memory.get(instr.operand).operand;
+      system.screen = system.memory.get(instr.operand).toNumber();
       system.incCounter();
     };
 
@@ -76,7 +76,7 @@ export class InstructionFactory {
 
   private getLoad(instr: Instruction): Instruction {
     instr.execute = (system: System) => {
-      system.accumulator = system.memory.get(instr.operand).operand;
+      system.accumulator = system.memory.get(instr.operand).toNumber();
       system.incCounter();
     };
 
@@ -93,7 +93,7 @@ export class InstructionFactory {
 
   private getAdd(instr: Instruction): Instruction {
     instr.execute = (system: System) => {
-      system.accumulator += system.memory.get(instr.operand).operand;
+      system.accumulator += system.memory.get(instr.operand).toNumber();
       system.incCounter();
     };
 
@@ -102,7 +102,7 @@ export class InstructionFactory {
 
   private getSubtract(instr: Instruction): Instruction {
     instr.execute = (system: System) => {
-      system.accumulator -= system.memory.get(instr.operand).operand;
+      system.accumulator -= system.memory.get(instr.operand).toNumber();
       system.incCounter();
     };
 
@@ -111,7 +111,7 @@ export class InstructionFactory {
 
   private getMultiply(instr: Instruction): Instruction {
     instr.execute = (system: System) => {
-      system.accumulator *= system.memory.get(instr.operand).operand;
+      system.accumulator *= system.memory.get(instr.operand).toNumber();
       system.incCounter();
     };
 
@@ -120,7 +120,7 @@ export class InstructionFactory {
 
   private getDivide(instr: Instruction): Instruction {
     instr.execute = (system: System) => {
-      system.accumulator /= system.memory.get(instr.operand).operand;
+      system.accumulator /= system.memory.get(instr.operand).toNumber();
       system.incCounter();
     };
 
