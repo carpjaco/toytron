@@ -41,6 +41,10 @@ export class System {
     this.isActive = false;
   }
 
+  status(): boolean {
+    return this.isActive;
+  }
+
   requestInput(address: number): void {
     this.addressForInput = +address;
     this.inputRequired = true;

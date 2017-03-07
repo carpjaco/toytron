@@ -1,53 +1,39 @@
-h3 {
-  margin-top: 0;
-  margin-bottom: .41rem;
-}
-
-.tt-section {
-  border: 1px solid #CCC;
-  border-radius: .41rem;  
+:host {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  padding: .512rem;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
 }
 
-.container {
-  width: 100%;
-  height: 100%;
-  border: 1px solid #CCC;
-  border-radius: .41rem;  
-  box-shadow: 2px 2px 10px #888;
-  overflow: hidden;
-}
-
-.sys-section {
+:host > div {
   width: 50%;
-  padding: .41rem;
-  text-align: center;
 }
 
+.btn-sys {
+  width: 75%;
+  margin-bottom: 1rem;
+}
 
 .sys-section {
-  width: 45%;
-}
-
-.sys-section-header {
-  background-color: transparent;
-}
-
-.sys-section-content {
   display: flex;
-  flex-flow: column nowrap;
-  padding: 1rem;
-  font-size: 1.25rem;
-  font-family: "Lucida Console", Monaco, monospace
+  flex-flow: row nowrap;
+}
+
+
+.sys-section > div {
+  width: 75%;
 }
 
 input {
-  font-family: "Lucida Console", Monaco, monospace;
-  text-align: center;
-  padding: .41rem;
-  border: 1px solid #CCC;
-  border-radius: .21rem;
+  width: 50px;
+  margin-bottom: .41rem;
+}
+
+textarea {
+  margin-left: 1rem;
+  width: 100%;
+  height: 100px;
+}
+
+label {
+  vertical-align: middle;
 }

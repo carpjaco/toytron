@@ -1,50 +1,26 @@
-<section class="tt-section">
-  <article class="sys-section">
-    <div class="container">
-      <div class="sys-section-header">
-        <h3>Accumulator</h3>
-      </div>
-      <div class="sys-section-content">
-        {{ system.accumulator }}
-      </div>
-    </div>
-  </article>
-
-  <article class="sys-section">
-    <div class="container">
-      <div class="sys-section-header">
-        <h3>Program Counter</h3>
-      </div>
-      <div class="sys-section-content">
-        {{ system.getCounter() }}
-      </div>
-    </div>
-  </article>
-
-  <article class="sys-section" [ngClass]="{'alert': system.isInputRequested()}">
-    <div class="container">
-      <div class="sys-section-header">
-        <h3>Input</h3>
-      </div>
-      <div class="sys-section-content">
-        <input type="text" [ngModel]="inputValue" (ngModelChange)="inputValue ? $event : null" #operand>
-        <button type="button" class="btn btn-input" (click)="setInput(operand)">
-          Go
-        </button> 
-      </div>
-    </div>
-  </article>
-
-  <article class="sys-section">
-    <div class="container">
-      <div class="sys-section-header">
-        <h3>Output</h3>
-      </div>
-      <div class="sys-section-content">
-        {{ system.screen }}
-      </div>
-    </div>
-  </article>
-
-  <button (click)="step()">Step</button>
-</section>
+<div>
+  <button class="btn btn-sys" (click)="x">Install code</button>
+  <button class="btn btn-sys" (click)="x">{{ system.status() ? 'Pause' : 'Activate' }}</button>
+  <button class="btn btn-sys" (click)="x">Reset memory</button>
+  <button class="btn btn-sys" (click)="x">Step</button>
+  <button class="btn btn-sys" (click)="x">Run</button>
+</div>
+<div>
+  <div class="sys-section">
+    <div><label for="sys-accumulator">Accumulator</label></div>
+    <input type="text" name="sys-accumulator" [value]="system.accumulator" disabled />
+  </div>
+  <div class="sys-section">
+    <div><label for="sys-counter">Address</label></div>
+    <input type="text" name="sys-counter" [value]="system.getCounter()" disabled />
+  </div>
+  <div class="sys-section">
+    <div><label for="sys-input">Input</label></div>
+    <input type="text" name="sys-input" [ngModel]="inputValue" (ngModelChange)="inputValue ? $event : null" (keyup)="setInput($event, operand)"
+      #operand />
+  </div>
+    <div class="sys-section">
+    <label for="sys-output">Output</label>
+    <textarea name="sys-output" [value]="system.screen"></textarea>
+  </div>
+</div>

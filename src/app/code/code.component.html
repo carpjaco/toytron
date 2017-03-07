@@ -1,21 +1,14 @@
-<section class="tt-section">
-  <div class="sec-col">
-    <select class="code-list" size="15" #selected>
+<div id="sec-code-list">
+  <select class="code-list" size="15" #selected>
       <option *ngFor="let instr of list; let ndx = index"
               [value]="ndx">
         {{ ndx | leftpad: 2 : '0' }}: {{ instr | instruction }}
       </option>
     </select>
-  </div>
-  <div class="sec-col">
-    <div class="sec-row">
-      <button type="button" class="btn btn-code" (click)="moveUp(selected.value)">Up</button>
-      <button type="button" class="btn btn-code" (click)="moveDown(selected.value)">Down</button>
-      <button type="button" class="btn btn-code" (click)="remove(selected.value)">Remove</button>
-    </div>
-    <div class="sec-row">
-      <button type="button" class="btn btn-code" (click)="install()">Install</button>
-      <button type="button" class="btn btn-code" (click)="clear()">Clear</button>
-    </div>
-  </div>
-</section>
+</div>
+<div id="sec-code-buttons">
+  <button class="btn btn-code" (click)="moveUp(selected.value)">Up</button>
+  <button class="btn btn-code" (click)="moveDown(selected.value)">Down</button>
+  <button class="btn btn-code" (click)="remove(selected.value)">Remove</button>
+  <button class="btn btn-code" (click)="clear()">Clear</button>
+</div>

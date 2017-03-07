@@ -1,25 +1,23 @@
-.tt-section {
+:host {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start;
-  border: 1px solid #CCC; 
-  border-radius: .41rem;   
-  padding: .512rem;
-}
-
-.code-section {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  width: 100%;
-}
-
-.btn-prg {
-  width: 45%;
-  margin: .41rem .21rem;
 }
 
 input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-prg {
+  width: 100%;
+}
+
+#sec-operand {
   margin-bottom: 1rem;
-  width: 95%;
+}
+
+#sec-prg-buttons {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
 }

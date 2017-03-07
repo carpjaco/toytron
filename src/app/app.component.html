@@ -1,27 +1,25 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-3">
+  <div class="tt-row">
+    <div class="tt-section tt-section-small">
       <div class="tt-component">
         <app-code (installCode)="onInstallCode($event)"></app-code>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="tt-section tt-section-small">
       <div class="tt-component">
         <app-program (codeCreated)="onCodeCreated($event)"></app-program>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="tt-component">
-        <app-system [system]="system" (inputRequest)="onInputRequest($event)"></app-system>
-      </div>
+    <div class="tt-section tt-section-large">
+      <app-system [system]="system" (inputRequest)="onInputRequest($event)">
+      </app-system>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="tt-component">
-        <app-memory [data]="system.memory.getAll()" [dimension]="system.memory.getDimension()">
-        </app-memory>
-      </div>
+
+  <div class="tt-row">
+    <div class="tt-section">
+      <app-memory [data]="system.memory.getAll()" [dimension]="system.memory.getDimension()">
+      </app-memory>
     </div>
   </div>
 </div>

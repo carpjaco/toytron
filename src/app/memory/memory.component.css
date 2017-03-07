@@ -1,13 +1,10 @@
-.tt-section {
-  border: 1px solid black;  
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+:host {
+  color: #CCC;
 }
-  
 .tbl-memory {
   text-align: center;
   border-collapse: collapse;
+  width: 100%;
 }
 
 .tbl-memory td:nth-of-type(1) {
@@ -20,10 +17,21 @@
   padding: .21rem 1rem;
 }
 
-.tbl-memory,
-.tbl-memory tr,
-.tbl-memory th,
-.tbl-memory td {
-  border: 1px solid #CCC;
-  border-radius: .41rem;
+.tbl-memory th {
+  border-bottom: 1px solid #647F7A;
 }
+
+.tbl-memory td {
+  border-bottom: 1px solid #333;
+}
+
+.tbl-memory td:first-of-type {
+  border-right: 1px solid #647F7A;
+  border-bottom: 0;
+}
+
+.tbl-memory th:first-of-type {
+  border: 0;
+}
+
+
