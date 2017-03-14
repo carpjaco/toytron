@@ -1,22 +1,21 @@
-<div id="sec-operand">
-  <input type="text" name="operand" placeholder="Memory address" #operand />
+<div class="sec-prg">
+  <input type="number" placeholder="Memory address to modify" #operand />
 </div>
-
-<div id="sec-prg-buttons">
-  <div>
-    <button type="button" class="btn btn-prg" (click)="create($event, operand)">Read</button>
-    <button type="button" class="btn btn-prg" (click)="create($event, operand)">Load</button>
-    <button type="button" class="btn btn-prg" (click)="create($event, operand)">Add</button>
-    <button type="button" class="btn btn-prg" (click)="create($event, operand)">Multiply</button>
-    <button type="button" class="btn btn-prg" (click)="create($event, operand)">Branch</button>
-    <button type="button" class="btn btn-prg" (click)="create($event, operand)">BranchNeg</button>
-  </div>
-  <div>
-    <button type="button" class="btn btn-prg" (click)="create($event, operand)">Write</button>
-    <button type="button" class="btn btn-prg" (click)="create($event, operand)">Store</button>
-    <button type="button" class="btn btn-prg" (click)="create($event, operand)">Subtract</button>
-    <button type="button" class="btn btn-prg" (click)="create($event, operand)">Divide</button>
-    <button type="button" class="btn btn-prg" (click)="create($event, operand)">BranchZero</button>
-    <button type="button" class="btn btn-prg" (click)="create($event, operand)">Halt</button>
-  </div>
+<div class="sec-prg">
+  <button class="btn btn-prg" (click)="create($event, operand)">Read</button>
+  <button class="btn btn-prg" (click)="create($event, operand)">Write</button>
+  <button class="btn btn-prg" (click)="create($event, operand)">Load</button>
+  <button class="btn btn-prg" (click)="create($event, operand)">Store</button>
+</div>
+<div class="sec-prg">
+  <button class="btn btn-prg" (click)="create($event, operand)">Add</button>
+  <button class="btn btn-prg" (click)="create($event, operand)">Subtract</button>
+  <button class="btn btn-prg" (click)="create($event, operand)">Multiply</button>
+  <button class="btn btn-prg" (click)="create($event, operand)">Divide</button>
+</div>
+<div class="sec-prg">
+  <button class="btn btn-prg" (click)="create($event, operand)">Branch</button>
+  <button class="btn btn-prg" (click)="create($event, operand)">BranchNeg</button>
+  <button class="btn btn-prg" (click)="create($event, operand)">BranchZero</button>
+  <button class="btn btn-prg" (click)="create($event, operand)">Halt</button>
 </div>

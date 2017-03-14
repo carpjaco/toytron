@@ -1,26 +1,31 @@
-<div>
-  <button class="btn btn-sys" (click)="x">Install code</button>
-  <button class="btn btn-sys" (click)="x">{{ system.status() ? 'Pause' : 'Activate' }}</button>
-  <button class="btn btn-sys" (click)="x">Reset memory</button>
-  <button class="btn btn-sys" (click)="x">Step</button>
-  <button class="btn btn-sys" (click)="x">Run</button>
+<div class="col-md-4">
+  <button class="btn btn-sys" (click)="install()">Install code to memory</button>
+  <button class="btn btn-sys" (click)="step()">Step</button>
+  <button class="btn btn-sys" (click)="run()">Run</button>
 </div>
-<div>
-  <div class="sys-section">
-    <div><label for="sys-accumulator">Accumulator</label></div>
-    <input type="text" name="sys-accumulator" [value]="system.accumulator" disabled />
+<div class="col-md-8">
+  <div>
+    <div class="sec-sys-info" id="box-accum">
+      <label for="txt-accumulator">Accumulator</label>
+      <input type="number" id="txt-accumulator" [value]="system.accumulator" disabled />
+    </div>
+    <div class="sec-sys-info" id="box-addr">
+      <label for="txt-address">Address</label>
+      <input type="number" id="txt-address" [value]="system.getCounter()" disabled />
+    </div>
+    <div class="sec-sys-info" id="box-input">
+      <label for="txt-input">Input</label>
+      <input type="number" 
+             id="txt-input" 
+             (keyup)="provideInput($event)" 
+             *ngClass="inputRequired" 
+             disabled />
+    </div>
   </div>
-  <div class="sys-section">
-    <div><label for="sys-counter">Address</label></div>
-    <input type="text" name="sys-counter" [value]="system.getCounter()" disabled />
-  </div>
-  <div class="sys-section">
-    <div><label for="sys-input">Input</label></div>
-    <input type="text" name="sys-input" [ngModel]="inputValue" (ngModelChange)="inputValue ? $event : null" (keyup)="setInput($event, operand)"
-      #operand />
-  </div>
-    <div class="sys-section">
-    <label for="sys-output">Output</label>
-    <textarea name="sys-output" [value]="system.screen"></textarea>
+  <div>
+    <div class="sec-sys-info" id="box-output">
+      <label for="txt-output">Output</label>
+      <textarea name="txt-output" [value]="system.screen" disabled></textarea>
+    </div>
   </div>
 </div>

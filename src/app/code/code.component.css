@@ -1,36 +1,15 @@
-:host {
+select {
+  background-color: #1C1C1C;
+  color: #DDD;
+  width: 100%;
+  border: 1px solid #21624d;
+  height: 100%;
+  outline: none;
+}
+
+#sec-code-control {
+  padding-top: .41rem;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-}
-
-#sec-code-list {
-  flex: 1;
-}
-
-#sec-code-buttons {
-  width: 75px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.code-list {
-  width: 90%;
-}
-
-.btn-code {
-  width: 70px;
-}
-
-.btn-code:last-of-type {
-  align-self: flex-end;
-}
-
-select {
-  background-color: #424242;
-  color: #FFF;
-  border: 1px solid #647F7A;
-  outline: none;
 }

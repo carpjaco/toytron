@@ -1,0 +1,55 @@
+>>> body {
+  padding: 1.95rem;
+  background-color: #1C1C1C; 
+}
+
+.container {
+  width: 700px;
+  margin: auto;
+  background-color: #6E6E6E;
+  border-radius: 1rem;
+
+}
+
+.row {
+  margin-bottom: 1.56rem;
+  padding: 1rem 0;
+}
+
+.container > .row {
+  border-bottom: 2px ridge #1C1C1C;
+}
+
+.container > .row:last-of-type {
+  border: 0;
+}
+
+>>> .btn {
+  background-color: #339A79;
+  border: 1px solid #21624D;
+  outline-style: none;
+}
+
+>>> .btn:hover {
+  background-color: #21624D; 
+}
+
+>>> input {
+  outline : none;
+  padding: .41rem;
+  background-color: #1C1C1C;
+  color: #DDD;
+  border: 1px solid #21624D;
+  border-radius: .41rem;
+  text-align: center;
+}
+
+>>> input[type=number]::-webkit-outer-spin-button,
+>>> input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+>>> input[type=number] {
+    -moz-appearance:textfield;
+}

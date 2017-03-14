@@ -1,14 +1,22 @@
-<div id="sec-code-list">
-  <select class="code-list" size="15" #selected>
-      <option *ngFor="let instr of list; let ndx = index"
-              [value]="ndx">
+<div class="row">
+  <div class="col-md-12" id="sec-code-list">
+    <select class="form-control" size="8" id="code-list" #selected>
+      <option *ngFor="let instr of list; let ndx = index" [value]="ndx">
         {{ ndx | leftpad: 2 : '0' }}: {{ instr | instruction }}
       </option>
     </select>
+  </div>
 </div>
-<div id="sec-code-buttons">
-  <button class="btn btn-code" (click)="moveUp(selected.value)">Up</button>
-  <button class="btn btn-code" (click)="moveDown(selected.value)">Down</button>
-  <button class="btn btn-code" (click)="remove(selected.value)">Remove</button>
-  <button class="btn btn-code" (click)="clear()">Clear</button>
+<div class="row">
+  <div class="col-md-12" id="sec-code-control">
+    <button class="btn btn-code" (click)="moveUp(selected.value)">
+      <span class="glyphicon glyphicon-arrow-up"></span>
+    </button>
+    <button class="btn btn-code" (click)="moveDown(selected.value)">
+      <span class="glyphicon glyphicon-arrow-down"></span>
+    </button>
+    <button class="btn btn-code" (click)="remove(selected.value)">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+  </div>
 </div>
