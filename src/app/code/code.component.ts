@@ -10,14 +10,13 @@ import { LeftPadPipe } from '../core/left-pad.pipe';
 })
 export class CodeComponent implements OnInit {
   private list: Instruction[];
-  @Output() private installCode: EventEmitter<Instruction[]> = new EventEmitter();
-
-  constructor() {
-    this.clear();
-  }
 
   append(instruction: Instruction) {
     this.list.push(instruction);
+  }
+
+  getList(): Instruction[] {
+    return this.list;
   }
 
   moveUp(index: number): void {
@@ -32,14 +31,6 @@ export class CodeComponent implements OnInit {
     this.list.splice(index, 1);
   }
 
-  clear(): void {
-    this.list = new Array<Instruction>();
-  }
-
-  install(): void {
-    this.installCode.emit(this.list);
-  }
-
   private swap(array: any[], a: number, b: number): any[] {
     try {
       if (a >= 0 && b >= 0 && a < array.length && b < array.length) {
@@ -52,5 +43,7 @@ export class CodeComponent implements OnInit {
     return array;
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.list = new Array<Instruction>();
+  }
 }

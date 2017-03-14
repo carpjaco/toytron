@@ -6,7 +6,8 @@ import { SystemComponent } from './system/system.component';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   private newCodeLine: Instruction;
@@ -15,11 +16,13 @@ export class AppComponent {
 
   constructor(private system: System) { }
 
-  private onCodeCreated(event): void {
-    this.codeComp.append(event);
+  private onInstallCode(event): void {
+    if (event) {
+      this.system.install(this.codeComp.getList());
+    }
   }
 
-  onInstallCode(event): void {
-    this.system.install(event);
+  private onCodeCreated(event): void {
+    this.codeComp.append(event);
   }
 }

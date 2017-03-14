@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
 import { System } from '../core/system.model';
 
 @Component({
@@ -8,9 +9,12 @@ import { System } from '../core/system.model';
 })
 export class SystemComponent implements OnInit {
   @Input() private system: System;
+  @Output() private installCode: EventEmitter<boolean> = new EventEmitter();
   private inputAlert: boolean;
 
-  constructor() { }
+  install(): void {
+    this.installCode.emit(true);
+  }
 
   run(): void {
     this.system.run();
