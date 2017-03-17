@@ -13,9 +13,9 @@ export class InstructionPipe implements PipeTransform {
 
   transform(value: Instruction, ...args: any[]) {
     const opcode = this.translateOp(value.operator);
-    const operand = this.leftPadPipe.transform(
-      value.operand, this.operandLength, '0'
-    );
+    const operand = opcode !== 'halt'
+      ? this.leftPadPipe.transform(value.operand, this.operandLength, '0')
+      : '';
 
     return `${opcode} ${operand}`;
   }
