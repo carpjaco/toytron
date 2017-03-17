@@ -16,17 +16,11 @@ export class SystemComponent implements OnInit {
     this.installCode.emit(true);
   }
 
-  run(): void {
-    this.system.run();
-  }
-
-  step(): void {
-    this.system.step();
-  }
-
-  setInput(field: HTMLInputElement): void {
-    this.system.provideInput(+field.value);
-    field.value = null;
+  readInput(event): void {
+    if (event.keyCode === 13) {
+      this.system.provideInput(+event.target.value);
+      event.target.value = null;
+    }
   }
 
   ngOnInit() { }

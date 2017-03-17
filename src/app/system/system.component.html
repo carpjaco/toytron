@@ -1,7 +1,7 @@
 <div class="col-md-4">
   <button class="btn btn-sys" (click)="install()">Install code to memory</button>
-  <button class="btn btn-sys" (click)="step()">Step</button>
-  <button class="btn btn-sys" (click)="run()">Run</button>
+  <button class="btn btn-sys" (click)="system.step()">Step</button>
+  <button class="btn btn-sys" (click)="system.run()">Run</button>
 </div>
 <div class="col-md-8">
   <div>
@@ -13,13 +13,11 @@
       <label for="txt-address">Address</label>
       <input type="number" id="txt-address" [value]="system.getCounter()" disabled />
     </div>
-    <div class="sec-sys-info" id="box-input">
+    <div class="sec-sys-info" id="box-input" [ngClass]="{'alert': system.isAwaitingInput()}">
       <label for="txt-input">Input</label>
       <input type="number" 
              id="txt-input" 
-             (keyup)="provideInput($event)" 
-             *ngClass="inputRequired" 
-             disabled />
+             (keyup)="readInput($event)" />
     </div>
   </div>
   <div>

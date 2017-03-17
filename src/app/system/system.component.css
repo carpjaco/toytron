@@ -69,3 +69,11 @@ textarea {
   color: #DDD;
   text-align: right;
 }
+
+.alert {
+  border: 1px solid red;
+}
+
+.alert > * {
+  color: red;
+}

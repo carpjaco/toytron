@@ -161,7 +161,7 @@ export class InstructionFactory {
 
   private getHalt(instr: Instruction): Instruction {
     instr.execute = (system: System) => {
-      system.pause();
+      system.halt();
     };
 
     return instr;

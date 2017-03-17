@@ -2,22 +2,29 @@ import { Memory } from './memory.model';
 import { EventEmitter, Output } from '@angular/core';
 import { Instruction } from './instruction.model';
 
+export enum Status {
+  Uninitialized,
+  Initialized,
+  Active,
+  AwaitingInput,
+  Halted
+}
+
 export class System {
   screen: number;
   accumulator: number;
   private prgCounter: number;
   private input: number;
   memory: Memory;
-  private isActive: boolean;
-  private inputRequired: boolean;
   private addressForInput: number;
+  private status: Status;
 
   constructor() {
     this.screen = null;
     this.accumulator = 0;
     this.prgCounter = 0;
     this.input = null;
-    this.isActive = false;
+    this.status = Status.Uninitialized;
     this.memory = new Memory();
   }
 
@@ -33,47 +40,51 @@ export class System {
     return this.prgCounter;
   }
 
-  activate(): void {
-    this.isActive = true;
-  }
+  initialize(instructions: Instruction[]): void {
+    if (this.status === Status.Uninitialized) {
+      this.status = Status.Initialized;
 
-  pause(): void {
-    this.isActive = false;
-  }
-
-  status(): boolean {
-    return this.isActive;
+      for (let i = 0; i < instructions.length; i++) {
+        this.memory.set(i, instructions[i]);
+      }
+    }
   }
 
   requestInput(address: number): void {
     this.addressForInput = +address;
-    this.inputRequired = true;
-  }
-
-   isInputRequested(): boolean {
-    return this.inputRequired;
+    this.status = Status.AwaitingInput;
   }
 
   provideInput(value: number): void {
     this.memory.set(this.addressForInput, +value);
-    this.inputRequired = false;
+    this.status = Status.Active;
     this.addressForInput = null;
     this.incCounter();
   }
 
-  install(instructions: Instruction[]) {
-    for (let i = 0; i < instructions.length; i++) {
-      this.memory.set(i, instructions[i]);
-    }
+  halt(): void {
+    this.status = Status.Halted;
+  }
+
+  isAwaitingInput(): boolean {
+    return this.status === Status.AwaitingInput;
+  }
+
+  isInitialized(): boolean {
+    return this.status === Status.Initialized || this.status === Status.Active;
   }
 
   step(): void {
-    (<Instruction>this.memory.get(this.prgCounter)).execute(this);
+    if (this.isInitialized()) {
+      (<Instruction>this.memory.get(this.prgCounter)).execute(this);
+    }
   }
 
   run(): void {
-    setTimeout(() => {
-      this.step();
-    }, 2000);
+    if (this.isInitialized()) {
+      setInterval(() => {
+        this.step();
+      }, 2000);
+    }
   }
 }

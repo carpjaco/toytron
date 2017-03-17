@@ -18,7 +18,7 @@ export class AppComponent {
 
   private onInstallCode(event): void {
     if (event) {
-      this.system.install(this.codeComp.getList());
+      this.system.initialize(this.codeComp.getList());
     }
   }
 
