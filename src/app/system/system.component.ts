@@ -10,10 +10,15 @@ import { System } from '../core/system.model';
 export class SystemComponent implements OnInit {
   @Input() private system: System;
   @Output() private installCode: EventEmitter<boolean> = new EventEmitter();
-  private inputAlert: boolean;
+  @Output() private resetCode: EventEmitter<boolean> = new EventEmitter();
 
   install(): void {
     this.installCode.emit(true);
+  }
+
+  reset(): void {
+    this.resetCode.emit(true);
+    this.system.reset();
   }
 
   readInput(event): void {

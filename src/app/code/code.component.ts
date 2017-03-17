@@ -31,6 +31,10 @@ export class CodeComponent implements OnInit {
     this.list.splice(index, 1);
   }
 
+  clear(): void {
+    this.list = new Array<Instruction>();
+  }
+
   private swap(array: any[], a: number, b: number): any[] {
     try {
       if (a >= 0 && b >= 0 && a < array.length && b < array.length) {
@@ -44,6 +48,6 @@ export class CodeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.list = new Array<Instruction>();
+    this.clear();
   }
 }

@@ -25,4 +25,8 @@ export class AppComponent {
   private onCodeCreated(event): void {
     this.codeComp.append(event);
   }
+
+  private onResetCode(event): void {
+    this.codeComp.clear();
+  }
 }
