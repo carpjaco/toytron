@@ -27,11 +27,11 @@
       <input type="number" id="txt-accumulator" [value]="system.accumulator" disabled />
     </div>
     <div class="sec-sys-info" id="box-addr">
-      <label for="txt-address">Address</label>
+      <label for="txt-address">Cur. Address</label>
       <input type="number" id="txt-address" [value]="system.getCounter()" disabled />
     </div>
     <div class="sec-sys-info" id="box-input" [ngClass]="{'alert': system.isAwaitingInput()}">
-      <label for="txt-input">Input</label>
+      <label for="txt-input">System Input</label>
       <input type="number" id="txt-input" (keyup)="readInput($event)" />
     </div>
   </div>

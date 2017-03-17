@@ -54,10 +54,11 @@ label {
 
 input {
   width: 100px;
-  padding: 0;
+  padding: 0 1rem;
   border: 0;
   position: relative;
   top: 2px;
+  text-align: right;
 }
 
 textarea {
@@ -74,6 +75,6 @@ textarea {
   border: 1px solid red;
 }
 
-.alert > * {
+.alert > label {
   color: red;
 }
