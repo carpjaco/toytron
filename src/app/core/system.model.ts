@@ -26,7 +26,7 @@ export class System {
   reset(): void {
     this.screen = null;
     this.accumulator = 0;
-    this.prgCounter = 0;
+    this.prgCounter = null;
     this.input = null;
     this.status = Status.Uninitialized;
     this.memory = new Memory();
@@ -47,6 +47,7 @@ export class System {
   initialize(instructions: Instruction[]): void {
     if (this.status === Status.Uninitialized) {
       this.status = Status.Initialized;
+      this.prgCounter = 0;
 
       for (let i = 0; i < instructions.length; i++) {
         this.memory.set(i, instructions[i]);

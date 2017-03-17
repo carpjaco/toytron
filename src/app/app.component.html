@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <app-code></app-code>
+      <app-code [activeLine]="system.getCounter()"></app-code>
     </div>
     <div class="col-md-8">
       <app-program (codeCreated)="onCodeCreated($event)"></app-program>

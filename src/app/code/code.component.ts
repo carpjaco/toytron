@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input } from '@angular/core';
 import { Instruction } from '../core/instruction.model';
 import { InstructionPipe } from '../core/instruction.pipe';
 import { LeftPadPipe } from '../core/left-pad.pipe';
@@ -10,6 +10,7 @@ import { LeftPadPipe } from '../core/left-pad.pipe';
 })
 export class CodeComponent implements OnInit {
   private list: Instruction[];
+  @Input() private activeLine: number;
 
   append(instruction: Instruction) {
     this.list.push(instruction);
@@ -33,6 +34,10 @@ export class CodeComponent implements OnInit {
 
   clear(): void {
     this.list = new Array<Instruction>();
+  }
+
+  isSelected(option?: number): boolean {
+    return this.activeLine === option;
   }
 
   private swap(array: any[], a: number, b: number): any[] {
