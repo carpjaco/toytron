@@ -1,4 +1,5 @@
 import { Address } from './address.model';
+import { AddressFactory } from './address.factory';
 
 export class Memory {
   private banks: Address[][];
@@ -19,8 +20,8 @@ export class Memory {
   set(address: number, value: any): void {
     if (!(value instanceof Address)) {
       const addr = new Address();
-      addr.operand = value;
-      value = addr;
+      addr.operator = Math.floor(Math.abs(value / 100));
+      addr.operand = Math.abs(value % 100);
     }
 
     this.banks[this.addressToRow(address)][this.addressToCol(address)] = value;

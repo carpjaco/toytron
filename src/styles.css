@@ -1,0 +1,41 @@
+body {
+  padding: 1.95rem;
+  background-color: #1C1C1C; 
+}
+
+input {
+  outline: none;
+  padding: .41rem;
+  background-color: #1C1C1C;
+  color: #DDD;
+  border: 1px solid #21624D;
+  border-radius: .41rem;
+  text-align: center;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+.btn {
+  background-color: #339A79;
+  border: 1px solid #21624D;
+  outline-style: none;
+}
+
+.btn:hover {
+  background-color: #21624D; 
+}
+
+.btn:focus, 
+.btn:active, 
+.btn:focus:active {
+  background-color: #21624D;
+  outline: 1px solid #21624D;
+}
