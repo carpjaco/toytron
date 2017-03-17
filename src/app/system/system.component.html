@@ -32,7 +32,10 @@
     </div>
     <div class="sec-sys-info" id="box-input" [ngClass]="{'alert': system.isAwaitingInput()}">
       <label for="txt-input">System Input</label>
-      <input type="number" id="txt-input" (keyup)="readInput($event)" />
+      <input type="number" 
+             id="txt-input" 
+             (keyup)="readInput($event)" 
+             [disabled]="!system.isAwaitingInput()" />
     </div>
   </div>
   <div>
