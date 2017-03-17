@@ -18,13 +18,14 @@ export class Memory {
   }
 
   set(address: number, value: any): void {
-    if (!(value instanceof Address)) {
+    if (value instanceof Address) {
+      this.banks[this.addressToRow(address)][this.addressToCol(address)] = value;
+    } else {
       const addr = new Address();
-      addr.operator = Math.floor(Math.abs(value / 100));
-      addr.operand = Math.abs(value % 100);
+      addr.operator = Math.floor(Math.abs(+value / 100));
+      addr.operand = Math.abs(+value % 100);
+      this.banks[this.addressToRow(address)][this.addressToCol(address)] = addr;
     }
-
-    this.banks[this.addressToRow(address)][this.addressToCol(address)] = value;
   }
 
   private addressToRow(address: number): number {
