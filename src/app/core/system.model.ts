@@ -78,6 +78,10 @@ export class System {
     return this.status === Status.Initialized || this.status === Status.Active;
   }
 
+  isFinished(): boolean {
+    return this.status === Status.Halted;
+  }
+
   step(): void {
     if (this.isInitialized()) {
       (<Instruction>this.memory.get(this.prgCounter)).execute(this);

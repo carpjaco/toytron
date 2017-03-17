@@ -86,6 +86,7 @@ export class InstructionFactory {
   private getStore(instr: Instruction): Instruction {
     instr.execute = (system: System) => {
       system.memory.set(instr.operand, system.accumulator);
+      system.incCounter();
     };
 
     return instr;
