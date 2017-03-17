@@ -20,6 +20,10 @@ export class System {
   private status: Status;
 
   constructor() {
+    this.reset();
+  }
+
+  reset(): void {
     this.screen = null;
     this.accumulator = 0;
     this.prgCounter = 0;
