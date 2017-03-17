@@ -13,8 +13,8 @@
 
 .tbl-memory th,
 .tbl-memory td {
-  width: 5rem;
-  padding: .21rem 1rem;
+  text-align: center;
+  padding: .51rem;
 }
 
 .tbl-memory th {
