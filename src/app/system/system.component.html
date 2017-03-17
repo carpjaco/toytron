@@ -1,8 +1,24 @@
 <div class="col-md-4">
-  <button class="btn btn-sys" (click)="install()" *ngIf="!system.isInitialized()">Install code to memory</button>
-  <button class="btn btn-sys" (click)="system.reset()" *ngIf="system.isInitialized()">Reset system</button>
-  <button class="btn btn-sys" (click)="system.step()" [disabled]="!system.isInitialized()">Step</button>
-  <button class="btn btn-sys" (click)="system.run()" [disabled]="!system.isInitialized()">Run</button>
+  <button class="btn btn-sys" 
+          (click)="install()" 
+          *ngIf="!system.isInitialized() && !system.isFinished()">
+    Install code to memory
+  </button>
+  <button class="btn btn-sys" 
+          (click)="system.reset()" 
+          *ngIf="system.isInitialized() || system.isFinished()">
+    Reset system
+  </button>
+  <button class="btn btn-sys" 
+          (click)="system.step()" 
+          [disabled]="!system.isInitialized()">
+    Step
+  </button>
+  <button class="btn btn-sys" 
+          (click)="system.run()" 
+          [disabled]="!system.isInitialized()">
+    Run
+  </button>
 </div>
 <div class="col-md-8">
   <div>
