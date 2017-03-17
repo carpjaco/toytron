@@ -40,6 +40,10 @@ export class CodeComponent implements OnInit {
     return this.activeLine === option;
   }
 
+  isEmpty(): boolean {
+    return this.list ? this.list.length === 0 : true;
+  }
+
   private swap(array: any[], a: number, b: number): any[] {
     try {
       if (a >= 0 && b >= 0 && a < array.length && b < array.length) {

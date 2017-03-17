@@ -11,13 +11,13 @@
 </div>
 <div class="row">
   <div class="col-md-12" id="sec-code-control">
-    <button class="btn btn-code" (click)="moveUp(selected.value)">
+    <button class="btn btn-code" (click)="moveUp(selected.value)" [disabled]="isEmpty()">
       <span class="glyphicon glyphicon-arrow-up"></span>
     </button>
-    <button class="btn btn-code" (click)="moveDown(selected.value)">
+    <button class="btn btn-code" (click)="moveDown(selected.value)" [disabled]="isEmpty()">
       <span class="glyphicon glyphicon-arrow-down"></span>
     </button>
-    <button class="btn btn-code" (click)="remove(selected.value)">
+    <button class="btn btn-code" (click)="remove(selected.value)" [disabled]="isEmpty()">
       <span class="glyphicon glyphicon-remove"></span>
     </button>
   </div>
