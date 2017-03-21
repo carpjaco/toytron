@@ -67,7 +67,7 @@ export class InstructionFactory {
 
   private getWrite(instr: Instruction): Instruction {
     instr.execute = (system: System) => {
-      system.screen = system.memory.get(instr.operand).toNumber();
+      system.output(system.memory.get(instr.operand).toNumber());
       system.incCounter();
     };
 

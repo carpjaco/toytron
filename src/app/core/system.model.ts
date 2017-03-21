@@ -11,7 +11,7 @@ export enum Status {
 }
 
 export class System {
-  screen: number;
+  private screen: string[];
   accumulator: number;
   private prgCounter: number;
   private input: number;
@@ -24,7 +24,7 @@ export class System {
   }
 
   reset(): void {
-    this.screen = null;
+    this.screen = new Array<string>();
     this.accumulator = null;
     this.prgCounter = null;
     this.input = null;
@@ -96,5 +96,20 @@ export class System {
         this.step();
       }, 2000);
     }
+  }
+
+  output(value: any): void {
+    this.screen.push(value.toString());
+  }
+
+  getOutput(): string {
+    let str = '';
+    const length = this.screen.length;
+
+    for (let ndx = 0; ndx < length; ndx++) {
+      str += `${this.screen[ndx]} \n`;
+    }
+
+    return str;
   }
 }
