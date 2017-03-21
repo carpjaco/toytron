@@ -86,7 +86,12 @@ export class System {
 
   step(): void {
     if (this.isInitialized()) {
-      (<Instruction>this.memory.get(this.prgCounter)).execute(this);
+      try {
+        (<Instruction>this.memory.get(this.prgCounter)).execute(this);
+      } catch (error) {
+        this.output('Error executing...');
+        this.halt();
+      }
     }
   }
 
