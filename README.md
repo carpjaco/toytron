@@ -1,27 +1,36 @@
 # Toytron
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
+A simple computer emulator that can be programmed with a (very) simplified
+assembly-like language.
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## How to program
+* Enter a memory address to modify (0-99) (this is the operand)
+* Select an operation using available buttons
+* Install 'code' to memory
+* Step or run through the program, viewing changes to memory
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Operations
+* **Read**
+  * Take input from the user and put it in the address specified by the operand
+* **Write**
+  * Output the value from address specified by the operand
+* **Load**
+  * Load the value from address specified by the operand into the Accumulator
+* **Store**
+  * Store Accumulator value into address specified by the operand
+* **Add**
+  * Add value in address specified by the operand to the Accumulator
+* **Subtract**
+  * Subtract value in address specified by the operand from the Accumulator
+* **Multiply**
+  * Multiply value in address specified by the operand by the Accumulator
+* **Divide**
+  * Divide the Accumulator by the address specified by the operand
+* **Branch**
+  * Branch to the address specified by the operand unconditionally
+* **BranchZero**
+  * Branch to the address specified by the operand only when the Accumulator equals 0
+* **BranchNeg**
+  * Branch to the address specified by the operand only when the Accumulator is a negative number
+* **Halt**
+  * Halt the system
