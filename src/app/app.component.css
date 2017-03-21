@@ -1,3 +1,36 @@
+header {
+  width: 700px;
+  margin: auto;
+  color: #FFF;
+}
+
+header > h1 {
+  /*display: inline-block;*/
+  /*margin-right: 1.95rem;*/
+  font-size: 4.77em;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+header > div:last-of-type {
+  text-align: right;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+footer {
+  width: 700px;
+  margin: auto;
+  color: #888;
+  text-align: center;
+}
+
+.heading-aside {
+  font-family: 'Share Tech Mono', monospace;
+  position: relative;
+  top: -10px;
+  left: 50px;
+}
+
 .container {
   width: 700px;
   margin: auto;
@@ -6,15 +39,17 @@
 
 }
 
-.row {
+.content-row {
   margin-bottom: 1.56rem;
   padding: 1rem 0;
-}
-
-.container > .row {
   border-bottom: 2px ridge #1C1C1C;
 }
 
 .container > .row:last-of-type {
   border: 0;
+}
+
+#lnk-github {
+  width: 50px;
+  height: 50px;
 }

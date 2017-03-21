@@ -1,5 +1,9 @@
+<header>
+  <h1>ToyTron</h1>
+  <span class="heading-aside">A simple computer emulator</span>
+</header>
 <div class="container">
-  <div class="row">
+  <div class="row content-row">
     <div class="col-md-4">
       <app-code [activeLine]="system.getCounter()"></app-code>
     </div>
@@ -8,18 +12,21 @@
     </div>
   </div>
 
-  <div class="row">
-    <app-system [system]="system" 
-                (inputRequest)="onInputRequest($event)"
-                (installCode)="onInstallCode($event)"
-                (resetCode)="onResetCode($event)">
+  <div class="row content-row">
+    <app-system [system]="system" (inputRequest)="onInputRequest($event)" (installCode)="onInstallCode($event)" (resetCode)="onResetCode($event)">
     </app-system>
   </div>
 
-  <div class="row">
+  <div class="row coptent-row">
     <div class="col-md-12">
       <app-memory [data]="system.memory.getAll()" [dimension]="system.memory.getDimension()">
       </app-memory>
     </div>
   </div>
 </div>
+<footer>
+  <p>Based on a problem in (Deitel and Deitel)</p>
+  <a href="https://github.com/carpjaco/toytron/">
+    <img id="lnk-github" src="../assets/github.png" alt="Show on GitHub" />
+  </a>
+</footer>
